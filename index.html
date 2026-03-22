@@ -165,7 +165,7 @@
     .event-text {
       font-size: calc(18px * var(--s));
       color: var(--text);
-      line-height: 2;
+      line-height: 1.6;
     }
     .event-text strong {
       color: var(--primary);
@@ -643,7 +643,7 @@
       <div class="map-address-text">
         <!-- EDIT: event address -->
         Талдықорған қаласы, Ғарышкер шағынауданы, 17В<br>
-        <small>«Riza» мейрамханасы</small>
+        <strong style="font-size: calc(22px * var(--s)); color: var(--primary);">«Riza» мейрамханасы</strong>
       </div>
     </div>
 
@@ -706,7 +706,7 @@
 <script>
 /* Font size controls — isolated script so errors elsewhere don't break this */
 (function () {
-  var BASE = 18, MIN = 14, MAX = 26, STEP = 2, KEY = 'inv_font_size';
+  var BASE = 18, MIN = 10, MAX = 26, STEP = 2, KEY = 'inv_font_size';
   var current = parseInt(localStorage.getItem(KEY)) || BASE;
 
   function apply(size) {
