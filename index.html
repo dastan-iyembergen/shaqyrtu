@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мерекелік шақыру — 29 наурыз 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════════
+       DESIGN TOKENS
+    ══════════════════════════════════════════ */
+    :root {
+      --bg:           #fdfaf6;
+      --bg-card:      #ffffff;
+      --primary:      #7a5c44;
+      --primary-dark: #5e432f;
+      --secondary:    #b08a68;
+      --accent:       #d4b896;
+      --accent-light: #efe4d8;
+      --sage:         #7d8f76;
+      --sage-light:   #c8d5c4;
+      --rose:         #c97a6a;
+      --text:         #3a2e27;
+      --text-mid:     #7a6a5e;
+      --text-light:   #b0a090;
+      --border:       #e5dcd3;
+      --shadow:       rgba(58, 46, 39, 0.08);
+      --radius:       18px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ══════════════════════════════════════════
+       PAGE WRAPPER
+    ══════════════════════════════════════════ */
+    .page {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 28px 16px 72px;
+    }
+
+    /* ══════════════════════════════════════════
+       DECORATIVE DIVIDER
+    ══════════════════════════════════════════ */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 28px 0;
+      color: var(--accent);
+      font-size: 16px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+    }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      text-align: center;
+      padding: 52px 28px 40px;
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 32px var(--shadow);
+      margin-bottom: 22px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--sage-light), var(--accent), var(--sage-light));
+    }
+    /* Soft ornament arcs */
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--accent-light);
+      opacity: 0.4;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 3.5px;
+      text-transform: uppercase;
+      color: var(--sage);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 7vw, 48px);
+      color: var(--primary);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .hero-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(15px, 3vw, 19px);
+      color: var(--secondary);
+    }
+    .hero-ornament {
+      font-size: 28px;
+      letter-spacing: 10px;
+      margin: 18px 0 0;
+      opacity: 0.55;
+    }
+
+    /* ══════════════════════════════════════════
+       CARD
+    ══════════════════════════════════════════ */
+    .card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 24px var(--shadow);
+      padding: 32px 28px;
+      margin-bottom: 22px;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 19px;
+      color: var(--primary);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title .icon { font-size: 21px; }
+
+    /* ══════════════════════════════════════════
+       GREETING
+    ══════════════════════════════════════════ */
+    .greeting {
+      font-size: 18px;
+      color: var(--text);
+    }
+    .greeting .names {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      color: var(--primary);
+      font-size: 20px;
+    }
+    .event-text {
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.9;
+    }
+    .event-text strong {
+      color: var(--primary);
+    }
+
+    /* ══════════════════════════════════════════
+       GLOBAL BALLOON BACKGROUND
+    ══════════════════════════════════════════ */
+    #balloons {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    /* Each balloon group: body + string */
+    .b {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .b-body {
+      border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+      position: relative;
+      opacity: 0.38;
+      animation: float linear infinite;
+    }
+    /* shine highlight */
+    .b-body::before {
+      content: '';
+      position: absolute;
+      top: 16%;
+      left: 20%;
+      width: 22%;
+      height: 18%;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%;
+      transform: rotate(-30deg);
+    }
+    /* knot */
+    .b-body::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0; height: 0;
+      border-left: 4px solid transparent;
+      border-right: 4px solid transparent;
+      border-top: 6px solid currentColor;
+      filter: brightness(0.65);
+    }
+    .b-string {
+      width: 1px;
+      background: rgba(122,92,68,0.18);
+    }
+
+    /* Gentle upward drift */
+    @keyframes float {
+      0%   { transform: translateY(0)    rotate(-1.5deg); }
+      50%  { transform: translateY(-18px) rotate(1.5deg); }
+      100% { transform: translateY(0)    rotate(-1.5deg); }
+    }
+
+    /* make sure page content sits above balloons */
+    .page { position: relative; z-index: 1; }
+
+    /* ══════════════════════════════════════════
+       DATE + CALENDAR
+    ══════════════════════════════════════════ */
+    .date-section {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .calendar-widget {
+      min-width: 210px;
+      flex: 0 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px var(--shadow);
+    }
+    .calendar-header {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .calendar-body {
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 12px 12px;
+      overflow: hidden;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+    }
+    .cal-day-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-light);
+      padding: 8px 2px 4px;
+      text-transform: uppercase;
+      background: #faf8f5;
+    }
+    .cal-day {
+      font-size: 12px;
+      padding: 5px 2px;
+      color: var(--text-mid);
+    }
+    .cal-day.highlight {
+      position: relative;
+    }
+    .cal-day.highlight span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 2px 8px rgba(122,92,68,0.45);
+    }
+    .cal-day.empty { pointer-events: none; visibility: hidden; }
+
+    .date-info { flex: 1; min-width: 160px; }
+    .date-big {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      color: var(--primary);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .date-time {
+      font-size: 16px;
+      color: var(--text-mid);
+      margin-bottom: 6px;
+    }
+    .date-note {
+      font-size: 13px;
+      color: var(--sage);
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .date-extra {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════════════
+       MAP
+    ══════════════════════════════════════════ */
+    .map-address {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    .map-address .pin { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .map-address-text { line-height: 1.6; }
+    .map-address-text small { color: var(--text-light); font-size: 13px; }
+    .map-embed {
+      width: 100%;
+      height: 240px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .map-embed iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════
+       RSVP
+    ══════════════════════════════════════════ */
+    .rsvp-intro {
+      font-size: 15px;
+      color: var(--text-mid);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+    .guest-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .guest-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      background: #faf8f5;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .guest-item:hover {
+      border-color: var(--accent);
+      box-shadow: 0 2px 14px var(--shadow);
+    }
+    .guest-item.error { border-color: var(--rose) !important; }
+    .guest-name-label {
+      flex: 1;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .toggle-group { display: flex; gap: 7px; }
+    .toggle-btn {
+      padding: 6px 15px;
+      border-radius: 22px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      font-size: 13px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--text-mid);
+      transition: all 0.18s;
+      white-space: nowrap;
+    }
+    .toggle-btn:hover:not(:disabled) {
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+    .toggle-btn.active-yes {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: #fff;
+    }
+    .toggle-btn.active-no {
+      background: var(--rose);
+      border-color: var(--rose);
+      color: #fff;
+    }
+    .toggle-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* ══════════════════════════════════════════
+       SUBMIT
+    ══════════════════════════════════════════ */
+    .submit-wrap { text-align: center; }
+    .btn-submit {
+      display: inline-block;
+      padding: 15px 52px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 36px;
+      font-size: 16px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 18px rgba(122, 92, 68, 0.32);
+    }
+    .btn-submit:hover:not(:disabled) {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 24px rgba(122, 92, 68, 0.42);
+    }
+    .btn-submit:active:not(:disabled) { transform: translateY(0); }
+    .btn-submit:disabled {
+      background: var(--text-light);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .status-msg {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 600;
+      min-height: 22px;
+      text-align: center;
+    }
+    .status-msg.success { color: var(--sage); }
+    .status-msg.error   { color: var(--rose); }
+    .status-msg.info    { color: var(--text-mid); }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    .footer {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 14px;
+      padding: 32px 0 0;
+      line-height: 2;
+    }
+
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
+    @media (max-width: 520px) {
+      .card { padding: 24px 16px; }
+      .date-section { flex-direction: column; }
+      .toggle-btn { padding: 5px 10px; font-size: 12px; }
+      .btn-submit { padding: 14px 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="balloons"></div>
+
+<div class="page">
+
+  <!-- ── HERO ─────────────────────────────────── -->
+  <div class="hero">
+    <p class="hero-eyebrow">Шақыру • Приглашение</p>
+
+    <!-- EDIT: Main title -->
+    <h1 class="hero-title">Мерекелік кеш</h1>
+
+    <!-- EDIT: Subtitle -->
+    <p class="hero-subtitle">29 наурыз 2026 • Талдықорған</p>
+
+    <p class="hero-ornament">✦ ✦ ✦</p>
+  </div>
+
+  <!-- ── GREETING + EVENT TEXT ─────────────────── -->
+  <div class="card">
+    <p class="greeting">
+      <!-- "Dear ..." — names are injected here by JS -->
+      <span id="greetingText">Қадірлі <span class="names" id="namesDisplay">қонақтар</span>,</span>
+    </p>
+
+    <div class="divider">✦</div>
+
+    <!-- ════════════════════════════════════════════
+         EDIT MAIN TEXT HERE
+    ════════════════════════════════════════════ -->
+    <p class="event-text" id="eventDescription">
+      Сізді ерекше мерекеге шақырамыз!<br><br>
+      Бұл күні біздің отбасымызда бірден <strong>екі үлкен қуаныш</strong> тоғысады:
+      <strong>анамыздың 50 жылдық мерей тойы</strong> және
+      <strong>жаңа нәресте бөбектің дүниеге келуі</strong>.<br><br>
+      Бұл сәттерді сіздермен бірге атап өткіміз келеді.
+      Сіздің назарыңыз бен жылы лебізіңіз — бізге ең үлкен сыйлық!
+    </p>
+  </div>
+
+  <!-- ── DATE + MINI CALENDAR ─────────────────── -->
+  <div class="card">
+    <h2 class="card-title"><span class="icon">📅</span> Күн мен уақыт</h2>
+    <div class="date-section">
+
+      <!-- Mini Calendar -->
+      <div class="calendar-widget">
+        <!-- EDIT: month/year label -->
+        <div class="calendar-header">Наурыз • 2026</div>
+        <div class="calendar-body">
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+      </div>
+
+      <!-- Date info text -->
+      <div class="date-info">
+        <!-- EDIT: date display -->
+        <div class="date-big">29 наурыз<br>2026</div>
+        <!-- EDIT: start time -->
+        <div class="date-time">⏰ Сағат 12:00</div>
+        <!-- EDIT: day of week -->
+        <div class="date-note">Жексенбі</div>
+
+        <div class="divider" style="margin:16px 0 14px">✦</div>
+
+        <!-- EDIT: extra date notes -->
+        <div class="date-extra">
+          Мерекенің ресми басталу уақыты.<br>
+          Уақытында келуіңізді сұраймыз.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── ADDRESS + MAP ────────────────────────── -->
+  <div class="card">
+    <h2 class="card-title"><span class="icon">📍</span> Мекен-жай</h2>
+
+    <div class="map-address">
+      <span class="pin">📌</span>
+      <div class="map-address-text">
+        <!-- EDIT: event address -->
+        Талдықорған қаласы, Ғарышкер шағынауданы, 17В<br>
+        <small>«Riza» мейрамханасы</small>
+      </div>
+    </div>
+
+    <div class="map-embed">
+      <!--
+        YANDEX MAPS EMBED:
+        1. Go to yandex.kz/maps
+        2. Find your exact address
+        3. Click Share (Поделиться) → Embed (Встроить на сайт)
+        4. Copy the src="..." value from the iframe code and paste it below.
+
+        The default below shows central Almaty as a placeholder.
+      -->
+      <iframe
+        src="https://yandex.com/map-widget/v1/?oid=102370328036&ol=biz&z=16"
+        allowfullscreen
+        loading="lazy"
+        title="Мекен-жай картасы">
+      </iframe>
+    </div>
+  </div>
+
+  <!-- ── RSVP ─────────────────────────────────── -->
+  <div class="card" id="rsvpCard">
+    <h2 class="card-title"><span class="icon">✉️</span> Келетіндігіңізді растаңыз</h2>
+
+    <!-- EDIT: RSVP intro text -->
+    <p class="rsvp-intro" id="rsvpIntro">
+      Төмендегі тізімнен өз атыңызды тауып, келетіндігіңізді немесе
+      келе алмайтындығыңызды белгілеп, «Жіберу» батырмасын басыңыз.
+    </p>
+
+    <div class="guest-list" id="guestList"></div>
+
+    <div class="submit-wrap">
+      <!-- EDIT: button label -->
+      <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">
+        Жіберу
+      </button>
+      <div class="status-msg" id="statusMsg"></div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ────────────────────────────────── -->
+  <!-- EDIT: footer text -->
+  <div class="footer">
+    Сізбен бірге болатынымызға қуаныштымыз! ❤️<br>
+    <span style="font-size:12px;color:var(--text-light);">29 наурыз 2026 • Талдықорған</span>
+  </div>
+
+</div><!-- /.page -->
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   ██████████████████████████████████████████████████████████
+   ██  CONFIGURATION — fill in your values here            ██
+   ██████████████████████████████████████████████████████████
+══════════════════════════════════════════════════════════════ */
+const CONFIG = {
+
+  /* ──────────────────────────────────────────────────────────
+     GOOGLE FORMS SETUP
+     ──────────────────────────────────────────────────────────
+     Steps to set up:
+     1. Go to forms.google.com → create a new form.
+     2. Add a Short answer question → label it "Аты" (Name).
+     3. Add a Multiple choice question → label it "Қатысуы"
+        (Attendance). Add two options: "Келемін" and "Келмеймін".
+     4. Click ⋮ menu (top-right of form) → "Get pre-filled link".
+     5. Fill dummy text in both fields → click "Get link".
+     6. The URL looks like:
+          https://docs.google.com/forms/d/e/FORM_ID/viewform
+              ?entry.123456789=dummy&entry.987654321=dummy
+        → FORM_ID goes into GOOGLE_FORM_ID below.
+        → entry.123456789 (Name field)   → FIELD_NAME
+        → entry.987654321 (Attend field) → FIELD_ATTENDANCE
+  ────────────────────────────────────────────────────────── */
+  GOOGLE_FORM_ID:   'YOUR_FORM_ID_HERE',
+  FIELD_NAME:       'entry.XXXXXXXXX',    // Replace with real entry ID
+  FIELD_ATTENDANCE: 'entry.YYYYYYYYY',    // Replace with real entry ID
+
+  /* Option values — must match exactly what you typed in the Google Form */
+  ATTENDANCE_YES: 'Келемін',
+  ATTENDANCE_NO:  'Келмеймін',
+
+  /* ──────────────────────────────────────────────────────────
+     CALENDAR
+     The day number to highlight (circle) in March 2026.
+  ────────────────────────────────────────────────────────── */
+  HIGHLIGHT_DAY: 29,
+};
+
+
+/* ══════════════════════════════════════════════════════════════
+   URL → NAMES
+   Usage:  https://yourname.github.io/shaqyrtu/?guests=Айгүл,Бауыр
+══════════════════════════════════════════════════════════════ */
+function getNamesFromURL() {
+  const p = new URLSearchParams(window.location.search);
+  const raw = p.get('guests') || p.get('names') || '';
+  return raw.split(',').map(n => n.trim()).filter(Boolean);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER GREETING
+══════════════════════════════════════════════════════════════ */
+function renderGreeting(names) {
+  if (!names.length) return; // keeps "қонақтар" default
+  document.getElementById('namesDisplay').textContent = names.join(', ');
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   RENDER RSVP LIST
+══════════════════════════════════════════════════════════════ */
+function renderGuestList(names) {
+  const card = document.getElementById('rsvpCard');
+  const list = document.getElementById('guestList');
+
+  if (!names.length) {
+    card.style.display = 'none';
+    return;
+  }
+
+  names.forEach(name => {
+    const item = document.createElement('div');
+    item.className = 'guest-item';
+    item.dataset.guest = name;
+    item.innerHTML = `
+      <span class="guest-name-label">${esc(name)}</span>
+      <div class="toggle-group">
+        <button class="toggle-btn" data-value="${esc(CONFIG.ATTENDANCE_YES)}"
+          onclick="pick(this)">✓ Келемін</button>
+        <button class="toggle-btn" data-value="${esc(CONFIG.ATTENDANCE_NO)}"
+          onclick="pick(this)">✗ Келмеймін</button>
+      </div>`;
+    list.appendChild(item);
+  });
+}
+
+function pick(btn) {
+  const group = btn.closest('.toggle-group');
+  group.querySelectorAll('.toggle-btn').forEach(b =>
+    b.classList.remove('active-yes', 'active-no'));
+  btn.classList.add(btn.dataset.value === CONFIG.ATTENDANCE_YES ? 'active-yes' : 'active-no');
+  btn.closest('.guest-item').classList.remove('error');
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   SUBMIT
+══════════════════════════════════════════════════════════════ */
+async function handleSubmit() {
+  const items = [...document.querySelectorAll('.guest-item')];
+  const responses = [];
+
+  for (const item of items) {
+    const active = item.querySelector('.toggle-btn.active-yes, .toggle-btn.active-no');
+    if (!active) {
+      item.classList.add('error');
+      item.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      setStatus(`"${item.dataset.guest}" үшін таңдаңыз`, 'error');
+      return;
+    }
+    responses.push({ name: item.dataset.guest, attendance: active.dataset.value });
+  }
+
+  if (CONFIG.GOOGLE_FORM_ID === 'YOUR_FORM_ID_HERE') {
+    setStatus('Google Forms ID-ін CONFIG ішіне жазыңыз', 'error');
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  setStatus('Жіберілуде…', 'info');
+
+  for (const { name, attendance } of responses) {
+    await postToForm(name, attendance);
+    await wait(350);
+  }
+
+  setStatus('✓ Сәтті жіберілді! Рахмет!', 'success');
+  document.querySelectorAll('.toggle-btn').forEach(b => b.disabled = true);
+  btn.textContent = '✓ Жіберілді';
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GOOGLE FORMS POST (hidden iframe trick — avoids CORS errors)
+══════════════════════════════════════════════════════════════ */
+function postToForm(name, attendance) {
+  return new Promise(resolve => {
+    const frameName = `gf_${Date.now()}`;
+    const iframe = document.createElement('iframe');
+    iframe.name = frameName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    const form = document.createElement('form');
+    form.method  = 'POST';
+    form.action  = `https://docs.google.com/forms/d/e/${CONFIG.GOOGLE_FORM_ID}/formResponse`;
+    form.target  = frameName;
+    form.style.display = 'none';
+
+    [[CONFIG.FIELD_NAME, name], [CONFIG.FIELD_ATTENDANCE, attendance]].forEach(([n, v]) => {
+      const inp = document.createElement('input');
+      inp.type = 'hidden'; inp.name = n; inp.value = v;
+      form.appendChild(inp);
+    });
+
+    document.body.appendChild(form);
+    form.submit();
+
+    setTimeout(() => {
+      document.body.removeChild(form);
+      document.body.removeChild(iframe);
+      resolve();
+    }, 1000);
+  });
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   MINI CALENDAR — March 2026
+══════════════════════════════════════════════════════════════ */
+function renderCalendar() {
+  const grid = document.getElementById('calendarGrid');
+  // Mon Tue Wed Thu Fri Sat Sun (Казахский / abbreviated)
+  ['Дс','Сс','Ср','Бс','Жм','Сн','Жк'].forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'cal-day-name';
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  const year = 2026, month = 3;
+  // firstDay: 0=Sun..6=Sat → convert to Mon-based offset
+  const firstDay = new Date(year, month - 1, 1).getDay();
+  const offset = (firstDay + 6) % 7; // 0=Mon
+
+  for (let i = 0; i < offset; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    el.textContent = '';
+    grid.appendChild(el);
+  }
+
+  const days = new Date(year, month, 0).getDate();
+  for (let d = 1; d <= days; d++) {
+    const el = document.createElement('div');
+    if (d === CONFIG.HIGHLIGHT_DAY) {
+      el.className = 'cal-day highlight';
+      el.innerHTML = `<span>${d}</span>`;
+    } else {
+      el.className = 'cal-day';
+      el.textContent = d;
+    }
+    grid.appendChild(el);
+  }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   GLOBAL BALLOON BACKGROUND
+   Fixed to viewport, scattered across the full page.
+══════════════════════════════════════════════════════════════ */
+function renderBalloons() {
+  const container = document.getElementById('balloons');
+
+  const colors = [
+    '#c8d5c4', '#d4b896', '#e0c8bc', '#b8c9b4', '#ddc4a8',
+    '#cdd8ca', '#e4ceb8', '#c4b0a4', '#e8d4c2', '#bfcfbb',
+  ];
+
+  // [leftVw, topVh] — loosely scattered to feel natural
+  const positions = [
+    [ 2,  5], [10, 55], [ 5, 80], [16, 25], [20, 70],
+    [28,  8], [33, 48], [37, 88], [44, 18], [47, 65],
+    [53, 36], [57,  6], [62, 73], [67, 43], [70, 13],
+    [74, 60], [79, 28], [83, 84], [87, 16], [91, 50],
+    [93, 68], [97, 33],
+  ];
+
+  positions.forEach(([leftVw, topVh], i) => {
+    const color  = colors[i % colors.length];
+    const size   = 40 + (i % 5) * 8;
+    const height = Math.round(size * 1.22);
+    const strLen = 50 + (i % 4) * 18;
+    const dur    = 3.5 + (i % 7) * 0.4;
+    const delay  = -(i * 0.55);
+
+    const b = document.createElement('div');
+    b.className = 'b';
+    b.style.cssText = `left:${leftVw}vw; top:${topVh}vh;`;
+
+    const body = document.createElement('div');
+    body.className = 'b-body';
+    body.style.cssText = `
+      width:${size}px; height:${height}px;
+      background:${color}; color:${color};
+      animation-duration:${dur}s;
+      animation-delay:${delay}s;
+    `;
+
+    const str = document.createElement('div');
+    str.className = 'b-string';
+    str.style.height = `${strLen}px`;
+
+    b.appendChild(body);
+    b.appendChild(str);
+    container.appendChild(b);
+  });
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════════════════════════ */
+function setStatus(msg, type) {
+  const el = document.getElementById('statusMsg');
+  el.textContent = msg;
+  el.className = `status-msg ${type}`;
+}
+function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════════════ */
+(function init() {
+  const names = getNamesFromURL();
+  renderGreeting(names);
+  renderGuestList(names);
+  renderCalendar();
+  renderBalloons();
+})();
+</script>
+</body>
+</html>
