@@ -36,9 +36,10 @@
 
     body {
       font-family: 'Nunito', sans-serif;
+      font-size: 18px;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.75;
+      line-height: 1.85;
     }
 
     /* ══════════════════════════════════════════
@@ -99,7 +100,7 @@
       opacity: 0.4;
     }
     .hero-eyebrow {
-      font-size: 11px;
+      font-size: 13px;
       letter-spacing: 3.5px;
       text-transform: uppercase;
       color: var(--sage);
@@ -108,7 +109,7 @@
     }
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 7vw, 48px);
+      font-size: clamp(34px, 8vw, 52px);
       color: var(--primary);
       line-height: 1.15;
       margin-bottom: 10px;
@@ -116,11 +117,11 @@
     .hero-subtitle {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: clamp(15px, 3vw, 19px);
+      font-size: clamp(18px, 4vw, 22px);
       color: var(--secondary);
     }
     .hero-ornament {
-      font-size: 28px;
+      font-size: 30px;
       letter-spacing: 10px;
       margin: 18px 0 0;
       opacity: 0.55;
@@ -138,35 +139,46 @@
     }
     .card-title {
       font-family: 'Playfair Display', serif;
-      font-size: 19px;
+      font-size: 22px;
       color: var(--primary);
       margin-bottom: 18px;
       display: flex;
       align-items: center;
       gap: 10px;
     }
-    .card-title .icon { font-size: 21px; }
+    .card-title .icon { font-size: 24px; }
 
     /* ══════════════════════════════════════════
        GREETING
     ══════════════════════════════════════════ */
     .greeting {
-      font-size: 18px;
+      font-size: 20px;
       color: var(--text);
     }
     .greeting .names {
       font-family: 'Playfair Display', serif;
       font-weight: 600;
       color: var(--primary);
-      font-size: 20px;
+      font-size: 22px;
     }
     .event-text {
-      font-size: 16px;
+      font-size: 18px;
       color: var(--text);
-      line-height: 1.9;
+      line-height: 2;
     }
     .event-text strong {
       color: var(--primary);
+    }
+    .event-reminder {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: var(--accent-light);
+      border-left: 4px solid var(--secondary);
+      border-radius: 10px;
+      font-size: 18px;
+      color: var(--primary);
+      font-weight: 600;
+      line-height: 1.7;
     }
 
     /* ══════════════════════════════════════════
@@ -254,7 +266,7 @@
       color: white;
       text-align: center;
       padding: 10px 16px;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 2px;
       text-transform: uppercase;
@@ -271,7 +283,7 @@
       text-align: center;
     }
     .cal-day-name {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
       color: var(--text-light);
       padding: 8px 2px 4px;
@@ -279,8 +291,8 @@
       background: #faf8f5;
     }
     .cal-day {
-      font-size: 12px;
-      padding: 5px 2px;
+      font-size: 14px;
+      padding: 6px 2px;
       color: var(--text-mid);
     }
     .cal-day.highlight {
@@ -290,13 +302,13 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: var(--primary);
       color: white;
       font-weight: 700;
-      font-size: 13px;
+      font-size: 15px;
       box-shadow: 0 2px 8px rgba(122,92,68,0.45);
     }
     .cal-day.empty { pointer-events: none; visibility: hidden; }
@@ -304,19 +316,19 @@
     .date-info { flex: 1; min-width: 160px; }
     .date-big {
       font-family: 'Playfair Display', serif;
-      font-size: 34px;
+      font-size: 38px;
       color: var(--primary);
       font-weight: 600;
       line-height: 1.1;
       margin-bottom: 8px;
     }
     .date-time {
-      font-size: 16px;
+      font-size: 20px;
       color: var(--text-mid);
       margin-bottom: 6px;
     }
     .date-note {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--sage);
       font-weight: 700;
       letter-spacing: 0.5px;
@@ -324,7 +336,7 @@
       margin-bottom: 14px;
     }
     .date-extra {
-      font-size: 14px;
+      font-size: 17px;
       color: var(--text-mid);
       line-height: 1.8;
     }
@@ -336,12 +348,12 @@
       display: flex;
       gap: 10px;
       align-items: flex-start;
-      font-size: 16px;
+      font-size: 19px;
       margin-bottom: 16px;
     }
-    .map-address .pin { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+    .map-address .pin { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
     .map-address-text { line-height: 1.6; }
-    .map-address-text small { color: var(--text-light); font-size: 13px; }
+    .map-address-text small { color: var(--text-light); font-size: 15px; }
     .map-embed {
       width: 100%;
       height: 240px;
@@ -360,10 +372,10 @@
        RSVP
     ══════════════════════════════════════════ */
     .rsvp-intro {
-      font-size: 15px;
+      font-size: 18px;
       color: var(--text-mid);
       margin-bottom: 20px;
-      line-height: 1.7;
+      line-height: 1.8;
     }
     .guest-list {
       display: flex;
@@ -388,17 +400,17 @@
     .guest-item.error { border-color: var(--rose) !important; }
     .guest-name-label {
       flex: 1;
-      font-size: 16px;
+      font-size: 19px;
       font-weight: 600;
       color: var(--text);
     }
-    .toggle-group { display: flex; gap: 7px; }
+    .toggle-group { display: flex; gap: 8px; flex-wrap: wrap; }
     .toggle-btn {
-      padding: 6px 15px;
-      border-radius: 22px;
+      padding: 10px 18px;
+      border-radius: 24px;
       border: 1.5px solid var(--border);
       background: transparent;
-      font-size: 13px;
+      font-size: 16px;
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
       cursor: pointer;
@@ -431,12 +443,12 @@
     .submit-wrap { text-align: center; }
     .btn-submit {
       display: inline-block;
-      padding: 15px 52px;
+      padding: 18px 56px;
       background: var(--primary);
       color: white;
       border: none;
       border-radius: 36px;
-      font-size: 16px;
+      font-size: 20px;
       font-family: 'Nunito', sans-serif;
       font-weight: 700;
       cursor: pointer;
@@ -458,7 +470,7 @@
     }
     .status-msg {
       margin-top: 16px;
-      font-size: 14px;
+      font-size: 17px;
       font-weight: 600;
       min-height: 22px;
       text-align: center;
@@ -535,6 +547,10 @@
 
       Тойымыздың көркі болып, қуанышымызды бірге еселейсіздер деп сенеміз!
     </p>
+
+    <div class="event-reminder">
+      👇 Төменде өз атыңызды тауып, келе алатыныңызды не келе алмайтыныңызды белгілеп, <strong>«Жіберу»</strong> батырмасын басыңыз.
+    </div>
   </div>
 
   <!-- ── DATE + MINI CALENDAR ─────────────────── -->
