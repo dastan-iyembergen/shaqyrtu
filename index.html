@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Мерекелік шақыру — 29 наурыз 2026</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎈</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet" />
@@ -499,7 +500,7 @@
     <p class="hero-eyebrow">Шақыру • Приглашение</p>
 
     <!-- EDIT: Main title -->
-    <h1 class="hero-title">Мерекелік кеш</h1>
+    <h1 class="hero-title">Сания 50 жас, Ахмет бесік той</h1>
 
     <!-- EDIT: Subtitle -->
     <p class="hero-subtitle">29 наурыз 2026 • Талдықорған</p>
@@ -520,12 +521,19 @@
          EDIT MAIN TEXT HERE
     ════════════════════════════════════════════ -->
     <p class="event-text" id="eventDescription">
-      Сізді ерекше мерекеге шақырамыз!<br><br>
-      Бұл күні біздің отбасымызда бірден <strong>екі үлкен қуаныш</strong> тоғысады:
-      <strong>анамыздың 50 жылдық мерей тойы</strong> және
-      <strong>жаңа нәресте бөбектің дүниеге келуі</strong>.<br><br>
-      Бұл сәттерді сіздермен бірге атап өткіміз келеді.
-      Сіздің назарыңыз бен жылы лебізіңіз — бізге ең үлкен сыйлық!
+      Сіздерді отбасымыз үшін ерекше қуанышты
+      <strong>қос мерекеге</strong> арналған ақ дастарханымыздың
+      қадірлі қонағы болуға шын жүректен шақырамыз.<br><br>
+
+      <strong>Сания</strong> асыл анамыздың
+      <strong>50 жас мерейтойы</strong> мен сүйікті ұлымыз
+      <strong>Ахметтің</strong> дүниеге келуіне орай
+      <strong>бесік тойын</strong> бірге атап өтпекпіз.<br><br>
+
+      Осы қуанышымызды сіздермен бөлісіп,
+      <strong>ақ тілектеріңіз бен баталарыңызды</strong> алсақ деген ниеттеміз.<br><br>
+
+      Тойымыздың көркі болып, қуанышымызды бірге еселейсіздер деп сенеміз!
     </p>
   </div>
 
@@ -651,13 +659,13 @@ const CONFIG = {
         → entry.123456789 (Name field)   → FIELD_NAME
         → entry.987654321 (Attend field) → FIELD_ATTENDANCE
   ────────────────────────────────────────────────────────── */
-  GOOGLE_FORM_ID:   'YOUR_FORM_ID_HERE',
-  FIELD_NAME:       'entry.XXXXXXXXX',    // Replace with real entry ID
-  FIELD_ATTENDANCE: 'entry.YYYYYYYYY',    // Replace with real entry ID
+  GOOGLE_FORM_ID:   '1FAIpQLSdAnDAybAvtH65nXwjkrrw4Qc2pP-RKz3rvboCwlq_vatSU0A',
+  FIELD_NAME:       'entry.1030832139',
+  FIELD_ATTENDANCE: 'entry.1813951067',
 
-  /* Option values — must match exactly what you typed in the Google Form */
-  ATTENDANCE_YES: 'Келемін',
-  ATTENDANCE_NO:  'Келмеймін',
+  /* Must match the option text in the Google Form exactly (including emojis) */
+  ATTENDANCE_YES: '✅ Келемін',
+  ATTENDANCE_NO:  '❌ Келмеймін',
 
   /* ──────────────────────────────────────────────────────────
      CALENDAR
@@ -707,9 +715,9 @@ function renderGuestList(names) {
       <span class="guest-name-label">${esc(name)}</span>
       <div class="toggle-group">
         <button class="toggle-btn" data-value="${esc(CONFIG.ATTENDANCE_YES)}"
-          onclick="pick(this)">✓ Келемін</button>
+          onclick="pick(this)">${esc(CONFIG.ATTENDANCE_YES)}</button>
         <button class="toggle-btn" data-value="${esc(CONFIG.ATTENDANCE_NO)}"
-          onclick="pick(this)">✗ Келмеймін</button>
+          onclick="pick(this)">${esc(CONFIG.ATTENDANCE_NO)}</button>
       </div>`;
     list.appendChild(item);
   });
