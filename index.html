@@ -634,6 +634,27 @@
     </div>
   </div>
 
+  <!-- ── RSVP ─────────────────────────────────── -->
+  <div class="card" id="rsvpCard">
+    <h2 class="card-title"><span class="icon">✉️</span> Келетіндігіңізді растаңыз</h2>
+
+    <!-- EDIT: RSVP intro text -->
+    <p class="rsvp-intro" id="rsvpIntro">
+      Төмендегі тізімнен өз атыңызды тауып, келетіндігіңізді немесе
+      келе алмайтындығыңызды белгілеп, «Жіберу» батырмасын басыңыз.
+    </p>
+
+    <div class="guest-list" id="guestList"></div>
+
+    <div class="submit-wrap">
+      <!-- EDIT: button label -->
+      <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">
+        Жіберу
+      </button>
+      <div class="status-msg" id="statusMsg"></div>
+    </div>
+  </div>
+
   <!-- ── ADDRESS + MAP ────────────────────────── -->
   <div class="card">
     <h2 class="card-title"><span class="icon">📍</span> Мекен-жай</h2>
@@ -663,27 +684,6 @@
         loading="lazy"
         title="Мекен-жай картасы">
       </iframe>
-    </div>
-  </div>
-
-  <!-- ── RSVP ─────────────────────────────────── -->
-  <div class="card" id="rsvpCard">
-    <h2 class="card-title"><span class="icon">✉️</span> Келетіндігіңізді растаңыз</h2>
-
-    <!-- EDIT: RSVP intro text -->
-    <p class="rsvp-intro" id="rsvpIntro">
-      Төмендегі тізімнен өз атыңызды тауып, келетіндігіңізді немесе
-      келе алмайтындығыңызды белгілеп, «Жіберу» батырмасын басыңыз.
-    </p>
-
-    <div class="guest-list" id="guestList"></div>
-
-    <div class="submit-wrap">
-      <!-- EDIT: button label -->
-      <button class="btn-submit" id="submitBtn" onclick="handleSubmit()">
-        Жіберу
-      </button>
-      <div class="status-msg" id="statusMsg"></div>
     </div>
   </div>
 
